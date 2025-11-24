@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        
+
+        body {
+            background: linear-gradient(to bottom, #2d1b0f 0%, #1a0f08 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+  font-family: "Acme", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+        }
+
+        /* Animated Gears Background */
+        .gear-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.12;
+        }
+
+        .gear {
+            position: absolute;
+            fill: none;
+            stroke: #8b6f47;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 8px rgba(139, 111, 71, 0.4));
+        }
+
+        .gear:nth-child(1) {
+            top: 10%;
+            left: 12%;
+            width: 180px;
+            height: 180px;
+            animation: rotate 25s linear infinite;
+        }
+
+        .gear:nth-child(2) {
+            top: 20%;
+            right: 18%;
+            width: 140px;
+            height: 140px;
+            animation: rotate 18s linear infinite reverse;
+        }
+
+        .gear:nth-child(3) {
+            bottom: 15%;
+            left: 20%;
+            width: 160px;
+            height: 160px;
+            animation: rotate 22s linear infinite;
+        }
+
+        .gear:nth-child(4) {
+            bottom: 25%;
+            right: 15%;
+            width: 120px;
+            height: 120px;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        .gear:nth-child(5) {
+            top: 55%;
+            left: 8%;
+            width: 100px;
+            height: 100px;
+            animation: rotate 15s linear infinite;
+        }
+
+        .gear:nth-child(6) {
+            top: 45%;
+            right: 10%;
+            width: 110px;
+            height: 110px;
+            animation: rotate 19s linear infinite reverse;
+        }
+
+        .gear:nth-child(7) {
+            bottom: 45%;
+            left: 45%;
+            width: 90px;
+            height: 90px;
+            animation: rotate 14s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Main Content Card with Enhanced Glassmorphism */
+        .content-card {
+            background: rgba(45, 27, 15, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 60px 70px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 1px rgba(212, 175, 55, 0.1),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+            max-width: 520px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 2.2em;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-family: "Acme", sans-serif;
+        }
+
+        .description {
+            color: #a89572;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 45px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            font-family: "Acme", sans-serif;
+        }
+
+        .input-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            color: #d4af37;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: "Acme", sans-serif;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px 24px;
+            font-size: 1.05em;
+            background: rgba(26, 15, 8, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #d4af37;
+            border: 1px solid rgba(139, 111, 71, 0.3);
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: "Acme", sans-serif;
+            letter-spacing: 1px;
+box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(139, 111, 71, 0.5);
+            letter-spacing: 0.5px;
+            font-family: "Acme", sans-serif;
+        }
+
+        input[type="text"]:focus {
+            background: rgba(26, 15, 8, 0.7);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 
+                inset 0 2px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 2px rgba(212, 175, 55, 0.2),
+                0 4px 20px rgba(212, 175, 55, 0.1);
+            transform: translateY(-1px);
+        }
+
+        input[type="text"].error {
+            border-color: rgba(200, 50, 50, 0.6);
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .error-message {
+            color: #c83232;
+            font-size: 0.8em;
+            margin-top: 8px;
+            font-family: "Acme", sans-serif;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1em;
+            background: linear-gradient(165deg, rgba(61, 40, 23, 0.8) 0%, rgba(45, 27, 15, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: "Acme", sans-serif;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.2), 
+                transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(165deg, rgba(74, 51, 34, 0.9) 0%, rgba(61, 40, 23, 0.9) 100%);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(212, 175, 55, 0.15),
+                0 0 20px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(26, 15, 8, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #d4af37;
+            padding: 20px 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 350px;
+            font-family: "Acme", sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            border-color: rgba(200, 50, 50, 0.5);
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toast-icon {
+            font-size: 1.5em;
+            color: #8b6f47;
+        }
+
+        .toast.error .toast-icon {
+            color: #c83232;
+        }
+
+        .toast-message {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .toast-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #8b6f47;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast-close:hover {
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Gears Background -->
+    <div class="gear-container">
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="40" stroke-width="3"/>
+            <circle cx="60" cy="60" r="20" stroke-width="2"/>
+            <line x1="60" y1="10" x2="60" y2="25" stroke-width="4"/>
+            <line x1="60" y1="95" x2="60" y2="110" stroke-width="4"/>
+            <line x1="10" y1="60" x2="25" y2="60" stroke-width="4"/>
+            <line x1="95" y1="60" x2="110" y2="60" stroke-width="4"/>
+            <line x1="21" y1="21" x2="32" y2="32" stroke-width="3"/>
+            <line x1="88" y1="88" x2="99" y2="99" stroke-width="3"/>
+            <line x1="99" y1="21" x2="88" y2="32" stroke-width="3"/>
+            <line x1="32" y1="88" x2="21" y2="99" stroke-width="3"/>
+            <circle cx="60" cy="60" r="8" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="35" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="18" stroke-width="2"/>
+            <line x1="60" y1="15" x2="60" y2="28" stroke-width="3.5"/>
+            <line x1="60" y1="92" x2="60" y2="105" stroke-width="3.5"/>
+            <line x1="15" y1="60" x2="28" y2="60" stroke-width="3.5"/>
+            <line x1="92" y1="60" x2="105" y2="60" stroke-width="3.5"/>
+            <line x1="25" y1="25" x2="35" y2="35" stroke-width="3"/>
+            <line x1="85" y1="85" x2="95" y2="95" stroke-width="3"/>
+            <line x1="95" y1="25" x2="85" y2="35" stroke-width="3"/>
+            <line x1="35" y1="85" x2="25" y2="95" stroke-width="3"/>
+            <circle cx="60" cy="60" r="7" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="38" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="22" stroke-width="2"/>
+            <line x1="60" y1="12" x2="60" y2="26" stroke-width="3.5"/>
+            <line x1="60" y1="94" x2="60" y2="108" stroke-width="3.5"/>
+            <line x1="12" y1="60" x2="26" y2="60" stroke-width="3.5"/>
+            <line x1="94" y1="60" x2="108" y2="60" stroke-width="3.5"/>
+            <line x1="23" y1="23" x2="34" y2="34" stroke-width="3"/>
+            <line x1="86" y1="86" x2="97" y2="97" stroke-width="3"/>
+            <line x1="97" y1="23" x2="86" y2="34" stroke-width="3"/>
+            <line x1="34" y1="86" x2="23" y2="97" stroke-width="3"/>
+            <circle cx="60" cy="60" r="9" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="33" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="19" stroke-width="2"/>
+            <line x1="60" y1="17" x2="60" y2="30" stroke-width="3"/>
+            <line x1="60" y1="90" x2="60" y2="103" stroke-width="3"/>
+            <line x1="17" y1="60" x2="30" y2="60" stroke-width="3"/>
+            <line x1="90" y1="60" x2="103" y2="60" stroke-width="3"/>
+            <line x1="27" y1="27" x2="37" y2="37" stroke-width="2.5"/>
+            <line x1="83" y1="83" x2="93" y2="93" stroke-width="2.5"/>
+            <line x1="93" y1="27" x2="83" y2="37" stroke-width="2.5"/>
+            <line x1="37" y1="83" x2="27" y2="93" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="8" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="30" stroke-width="2"/>
+            <circle cx="60" cy="60" r="16" stroke-width="2"/>
+            <line x1="60" y1="20" x2="60" y2="32" stroke-width="3"/>
+            <line x1="60" y1="88" x2="60" y2="100" stroke-width="3"/>
+            <line x1="20" y1="60" x2="32" y2="60" stroke-width="3"/>
+            <line x1="88" y1="60" x2="100" y2="60" stroke-width="3"/>
+            <line x1="30" y1="30" x2="39" y2="39" stroke-width="2.5"/>
+            <line x1="81" y1="81" x2="90" y2="90" stroke-width="2.5"/>
+            <line x1="90" y1="30" x2="81" y2="39" stroke-width="2.5"/>
+            <line x1="39" y1="81" x2="30" y2="90" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="6" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="32" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="17" stroke-width="2"/>
+            <line x1="60" y1="18" x2="60" y2="31" stroke-width="3"/>
+            <line x1="60" y1="89" x2="60" y2="102" stroke-width="3"/>
+            <line x1="18" y1="60" x2="31" y2="60" stroke-width="3"/>
+            <line x1="89" y1="60" x2="102" y2="60" stroke-width="3"/>
+            <line x1="28" y1="28" x2="38" y2="38" stroke-width="2.5"/>
+            <line x1="82" y1="82" x2="92" y2="92" stroke-width="2.5"/>
+            <line x1="92" y1="28" x2="82" y2="38" stroke-width="2.5"/>
+            <line x1="38" y1="82" x2="28" y2="92" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="7" stroke-width="2"/>
+        </svg>
+        <svg class="gear" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="28" stroke-width="2"/>
+            <circle cx="60" cy="60" r="15" stroke-width="2"/>
+            <line x1="60" y1="22" x2="60" y2="33" stroke-width="2.5"/>
+            <line x1="60" y1="87" x2="60" y2="98" stroke-width="2.5"/>
+            <line x1="22" y1="60" x2="33" y2="60" stroke-width="2.5"/>
+            <line x1="87" y1="60" x2="98" y2="60" stroke-width="2.5"/>
+            <line x1="32" y1="32" x2="40" y2="40" stroke-width="2"/>
+            <line x1="80" y1="80" x2="88" y2="88" stroke-width="2"/>
+            <line x1="88" y1="32" x2="80" y2="40" stroke-width="2"/>
+            <line x1="40" y1="80" x2="32" y2="88" stroke-width="2"/>
+            <circle cx="60" cy="60" r="5" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-card">
+        <h1>Panorama</h1>
+        <p class="description">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at iaculis lacus. Nunc eget leo at justo lobortis semper. Mauris semper ornare risus eget iaculis.     </p>
+        
+        <form id="cipherForm">
+            <div class="input-group">
+                <label for="userName">Name</label>
+                <input type="text" id="userName" placeholder="Enter your name">
+                <div class="error-message" id="nameError">Name cannot be empty</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="userInput">Guess</label>
+                <input type="text" id="userInput" placeholder="Enter your guess">
+                <div class="error-message" id="cipherError">The cipher cannot be empty</div>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <button class="toast-close" onclick="hideToast()">×</button>
+        <div class="toast-content">
+            <div class="toast-icon">⚙</div>
+            <div class="toast-message" id="toastMessage">Guess submitted.</div>
+        </div>
+    </div>
+
+<script>
+        // REPLACE WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxgqPiiY3zWVre0CwUiNWYISW6icb5rshCxBu418C29ds0aHbDIdCxjeHcZ0db3ocsEfg/exec';
+
+        const form = document.getElementById('cipherForm');
+        const nameInput = document.getElementById('userName');
+        const cipherInput = document.getElementById('userInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const nameError = document.getElementById('nameError');
+        const cipherError = document.getElementById('cipherError');
+
+        // Clear error styling on input
+        nameInput.addEventListener('input', function() {
+            nameInput.classList.remove('error');
+            nameError.classList.remove('show');
+        });
+
+        cipherInput.addEventListener('input', function() {
+            cipherInput.classList.remove('error');
+            cipherError.classList.remove('show');
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = nameInput.value.trim();
+            const cipher = cipherInput.value.trim();
+            let hasError = false;
+
+            // Validation
+            if (!name) {
+                nameInput.classList.add('error');
+                nameError.classList.add('show');
+                hasError = true;
+            }
+
+            if (!cipher) {
+                cipherInput.classList.add('error');
+                cipherError.classList.add('show');
+                hasError = true;
+            }
+
+            if (hasError) {
+                showToast('Please complete all fields before transmitting', true);
+                return;
+            }
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        guess: cipher
+                    })
+                });
+
+                // Note: no-cors mode doesn't allow reading response, but request will succeed
+                showToast('Guess Submitted', false);
+                
+                // Clear form
+                nameInput.value = '';
+                cipherInput.value = '';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Submssion failed. The mechanism encountered an error', true);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            }
+        });
+
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = toast.querySelector('.toast-icon');
+            
+            toastMessage.textContent = message;
+            
+            if (isError) {
+                toast.classList.add('error');
+                toastIcon.textContent = '⚠';
+            } else {
+                toast.classList.remove('error');
+                toastIcon.textContent = '⚙';
+            }
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                hideToast();
+            }, 4000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
